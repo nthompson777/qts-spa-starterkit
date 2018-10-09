@@ -1,0 +1,47 @@
+<div class="grid-container-fluid">
+  <div class="grid-x">
+    <div class="small-12 cell">
+      <span #top></span>
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <div class="hamburger hide-for-medium" [attr.aria-expanded]="!isOffcanvas" aria-controls="offCanvasMenu" (click)="offcanvas.show()">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+          <a routerLink="" (click)="select(appTitle)" [ngClass]="{active: isActive(appTitle)}" title="{{appTitle}} Home">
+            <div class="mainlogo">
+            </div>
+            <div class="appTitle">
+              {{appTitle}}
+            </div>
+          </a>
+        </div>
+        <nav class="top-bar-right hide-for-small-only">
+          <ul class="menu">
+            <li *ngFor="let link of links" 
+              routerLinkActive="active"  
+              [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="link.path" (click)="offcanvas.hide()">{{ link.text }}</a>
+            </li>
+          </ul>
+        </nav>
+        
+        <nav [offcanvas]="isOffcanvas" class="off-canvas position-left" id="offCanvasMenu" aria-hidden="true" #offcanvas="bs-offcanvas"> 
+          <ul class="menu vertical">
+            <li class="main-title">Main Menu</li>
+            <li class="title">Header Here</li>
+            <li *ngFor="let link of links" 
+              routerLinkActive="active"  
+              [routerLinkActiveOptions]="{ exact: true }">
+              <a [routerLink]="link.path" (click)="offcanvas.hide()">{{ link.text }}</a>
+            </li> 
+          </ul>
+          <button class="close-button" aria-label="Close Menu" aria-controls="offCanvasMenu" type="button" (click)="offcanvas.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+        </nav>
+      </header>
+    </div><!-- / Parent cell -->
+  </div><!-- /grid-x -->
+</div><!-- /grid-container-fluid -->

@@ -1,0 +1,59 @@
+<div class="grid-x grid-margin-x">
+  <div class="medium-4 large-2 cell">
+    <app-sidenav></app-sidenav>
+  </div><!-- /cell -->
+  <div class="medium-8 large-10 cell">
+    <section>
+      <h2>Callouts</h2>
+      <p class="lead">
+        Callouts combine panels and alerts from Foundation 5 into one generic container component.
+      </p>
+      <p><em>NOTE: Callouts are the equivalent to Bootstrap Alerts and use the AlertModule.</em></p>
+    </section>
+  
+    <section>
+      <h3>Usage</h3>
+      <pre><code highlight [code]="usage"></code></pre>
+    </section>
+
+    <section>
+      <h3>Examples</h3>
+      <h4>Basic</h4>
+      <p>Alerts are available for any length of text, as well as an optional dismiss/close button. The 'callout' class is automatically added for you, but for proper styling use one of the five required contextual classes (i.e.  primary, secondary, success, warning, and alert).</p>
+      <alert type="primary">
+        <strong>This is a primary callout.</strong> This alert needs your attention, but it's not super important.
+      </alert>
+      <alert type="success">
+        <strong>This is a success callout.</strong> You successfully read this message.
+      </alert>
+      <alert type="warning">
+        <strong>This is a warning callout.</strong> This is only a warning so take heed.
+      </alert>
+      <alert type="alert">
+        <strong>This is an alert callout.</strong> Bad. Ya blew it. Great job! 
+      </alert>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="basicTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="basicComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Dissmissable with Dynamic HTML</h4>
+      <p>Callouts (BS Alerts) have a dismiss option. Enabling it will show a close button to the right of the alert.</p> 
+        
+      <p>Sometimes you will need to show dynamically generated HTML in alerts, here is how you can make it. And don't forget to sanitize your html.<span class="backtick"></span></p>
+      <div *ngFor="let alert of alerts">
+        <alert [type]="alert.type" [dismissible]="dismissible" (onClosed)="onClosed(alert)"><span [innerHtml]="alert.msg"></span></alert>
+      </div>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="dissmissTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="dissmissComponent"></code></pre></tab>
+      </tabset>
+    </section>
+  </div><!-- /cell -->
+</div><!-- /grid -->

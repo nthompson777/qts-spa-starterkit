@@ -1,0 +1,76 @@
+<div class="grid-x grid-margin-x">
+  <div class="medium-4 large-2 cell">
+    <app-sidenav></app-sidenav>
+  </div><!-- /cell -->
+  <div class="medium-8 large-10 cell">
+    <section>
+      <h2>Rating</h2>
+      <p class="lead">
+        Rating component that will take care of visualising a star rating bar.
+      </p>
+    </section>
+        
+    <section>
+      <h3>Usage</h3>
+      <pre><code highlight [code]="usage"></code></pre>
+    </section>
+  
+    <section>
+      <h3>Examples</h3>
+      <h4>Basic Rating</h4>
+      <rating [(ngModel)]="basicRate" [max]="max" [readonly]="isReadonly"></rating>
+      <div class="callout">
+        <pre>Rate: <strong>{{basicRate}}</strong> </pre>
+      </div>
+    </section>
+    <section>
+      <tabset #staticTabs>
+        <tab heading="Template"><pre><code highlight [code]="basicTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="basicComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Dynamic Rating</h4>
+      <rating [(ngModel)]="rate" 
+        [max]="max" 
+        [readonly]="isReadonly"
+        (onHover)="hoveringOver($event)" 
+        (onLeave)="resetStar()"
+        [titles]="['one','two','three']">
+      </rating>
+        <span
+        [ngClass]="{'alert-color': percent<60, 'success-color': percent>=60}"
+        [ngStyle]="{display: (overStar && !isReadonly) ? 'inline' : 'none'}"> {{percent}}%</span>
+      <div class="callout">
+        <pre>Rate: <strong>{{rate}}</strong>;  Readonly is: <em>{{isReadonly}}</em>;  Hovering over: <strong>{{overStar || "none"}}</strong></pre>
+      </div>
+      <button class="button small primary" (click)="resetStarsCTA()">Reset rating and status</button>
+    </section>
+    <section>
+      <tabset #staticTabs>
+        <tab heading="Template"><pre><code highlight [code]="dynamicTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="dynamicComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Select On Enter</h4>
+      <rating [(ngModel)]="onEnterRate" 
+        [max]="max" 
+        [readonly]="isReadonlyEnter"
+        (keyup)="confirmSelection($event)">
+      </rating>
+      <div class="callout">
+        <pre>Rating: <b>{{onEnterRate}}</b>;  Readonly is: <i>{{isReadonlyEnter}}</i>;</pre>
+      </div>
+      <button class="button primary" (click)="onEnterResetStarsCTA()">Reset rating and status</button>
+    </section>
+    <section>
+      <tabset #staticTabs>
+        <tab heading="Template"><pre><code highlight [code]="onEnterTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="onEnterComponent"></code></pre></tab>
+      </tabset>
+    </section>
+  </div><!-- /cell -->
+</div><!-- /grid -->

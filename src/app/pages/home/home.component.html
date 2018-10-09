@@ -1,0 +1,57 @@
+<div class="grid-x grid-margin-x">
+  <div class="small-12 cell">
+    <section>
+      <h3>H3 Header Here</h3>
+      <p>In root, see web.config for IIS pretty URL routing, see .htaccess for Apache.</p> 
+    </section>
+
+    <section>
+      <h4>Font-Awesome Angular Test</h4>
+      <p>
+        You should see a blue check icon here: <fa-icon [icon]="faCheck" size="2x" class="color"></fa-icon>
+      </p>
+    </section>
+
+    <section>
+      <h4>Ag-Grid Test</h4>
+      <p>
+        You should see a fixed height 3 col table (Make, Model, and Price) fetch some remote json data. Don't use Grid <a href="https://www.ag-grid.com/javascript-grid-width-and-height/#auto-height" target="_blank">Auto Height</a> when displaying large numbers of rows:
+      </p> 
+      <button class="button primary small" (click)="getSelectedRows()">Get Selected Rows</button>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-8 large-6 cell">
+          <ag-grid-angular
+            #agGrid 
+            class="ag-theme-balham"
+            [enableSorting]="true"
+            [enableFilter]="true"
+            [rowData]="rowData | async" 
+            [columnDefs]="columnDefs"
+            rowSelection="multiple"
+            [animateRows]="true"
+            [pagination]="true">
+          </ag-grid-angular>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+
+    <section>
+      <h4>ngx-foundation Components Test</h4>
+      <p><a href="https://www.ngxfoundation.com" target="_blank">https://www.ngxfoundation.com</a></p>
+      <p>You should see a red alert box below if ngx-foundation is properly loaded:</p>
+      <alert type="alert" [dismissible]="dismissible">
+        This is an alert callout.
+      </alert>
+    </section>
+    <section>
+      <p>You should see a button below with a tooltip that triggers onHover:</p>
+      <button type="button" 
+        class="button primary"
+        tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+        placement="auto">
+        Simple demo
+      </button>
+    </section>
+  </div><!-- /cell -->
+</div><!-- /grid -->
+

@@ -1,0 +1,82 @@
+<div class="grid-x grid-margin-x">
+  <div class="medium-4 large-2 cell">
+    <app-sidenav></app-sidenav>
+  </div><!-- /cell -->
+  <div class="medium-8 large-10 cell">
+    <section>
+      <h2>Progressbar</h2>
+      <p class="lead">
+        Provide up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars.
+      </p>
+      <p>NOTE: ngx-foundation adds CSS based animations <code>$progress-meter-animation</code> to the progressbars and fixes the progress-meter-text alignment when the percentage text has a low value (if displaying with text).</p> 
+        
+      <p>If you wish to remove animations, simply set the variable to none <code>$progress-meter-animation: none;</code>. It is recommended to use a darker color for the <code>$progress-background</code> or darken the default gray <code>$progress-background: darken($medium-gray, 8%);</code> so low percentages text is visible on top of the progressbar background.</p> 
+    </section>
+        
+    <section>
+      <h3>Usage</h3>
+      <pre><code highlight [code]="usage"></code></pre>
+    </section>
+  
+    <section>
+      <h3>Examples</h3>
+      <h4>Basic Static Progressbar</h4>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-8 large-5 cell">
+          <section>
+            <progressbar [value]="85" type="default"></progressbar>
+            <progressbar [value]="75" type="success" class="success">75%</progressbar>
+            <progressbar [value]="50" type="warning" class="warning">50%</progressbar>
+            <progressbar [value]="25" type="alert" class="alert">25%</progressbar>
+            <progressbar [value]="0" type="alert" class="alert">0%</progressbar>
+          </section>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="staticTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="staticComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h5>Dynamic Progress Bar</h5>
+      <p>Changes type/color based on value.</p>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-8 large-5 cell">
+          <progressbar [ngClass]="type" [value]="dynamic" [type]="type">{{dynamic}}%</progressbar>
+          <p>Level: {{type | capitalize}} <span class="info-tooltip"
+            tooltip="Displaying a progress bar level of {{type}}."
+            placement="auto"></span>
+          </p> 
+          <button type="button" class="button small primary" (click)="random()">Randomize Above Progress Bar</button>
+        </div>
+      </div>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="dynamicTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="dynamicComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <!-- <section>
+      <h5>Stacked</h5>
+      <p>Changes type/color based on value.</p>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-8 large-5 cell">
+          <progressbar [value]="stacked" [ngClass]="value" [max]="100"></progressbar>
+          <button type="button" class="button small primary" (click)="randomStacked()">Randomize Above Progress Bar</button>
+        </div>
+      </div>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="dynamicTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="dynamicComponent"></code></pre></tab>
+      </tabset>
+    </section> -->
+
+  </div><!-- /cell -->
+</div><!-- /grid -->

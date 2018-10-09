@@ -1,0 +1,151 @@
+<div class="grid-x grid-margin-x">
+  <div class="medium-4 large-2 cell">
+    <app-sidenav></app-sidenav>
+  </div><!-- /cell -->
+  <div class="medium-8 large-10 cell">
+    <section>
+      <h2>Tabs</h2>
+      <p class="lead">
+        Tabs are elements that help you organize and navigate multiple documents in a single container. They can be used for switching between items in the container. <strong>Nested tabs are not supported.</strong></p>  
+    </section>
+    <section>
+      <h3>Usage</h3>
+      <pre><code highlight [code]="usage"></code></pre>
+    </section>
+    
+    <section>
+      <h3>Examples</h3>
+      <h4>Basic</h4>
+      <tabset>
+        <tab heading="Basic Title 1">Basic content 1</tab>
+        <tab heading="Basic Title 2">Basic content 2</tab>
+        <tab heading="Basic Title 3">Basic content 3</tab>
+      </tabset>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="basicTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="basicComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Manual Selection and Disabled Tabs</h4>
+      <p>You can select tabs directly from component. Tabs can be enabled or disabled by changing <code>disabled</code> input property.</p>
+      <div class="btn-cont">
+        <button type="button" class="button small primary" (click)="selectTab(1)">Select second tab</button>
+        <button type="button" class="button small secondary" (click)="selectTab(2)">Select third tab</button>
+        <button type="button" class="button small primary" (click)="disableEnableTab()">
+          Disable/Enable fourth tab
+        </button>
+      </div>
+    </section>
+    <section>
+      <tabset #staticTabs>
+        <tab heading="Static Tab 1">Tab 1 static content</tab>
+        <tab heading="Static Tab 2">Tab 2 static content</tab>
+        <tab heading="Static Tab 3">Tab 3 static content</tab>
+        <tab heading="Static Tab 4">Tab 4 static content</tab>
+      </tabset>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="manualTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="manualComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Dynamic Tabs</h4>
+      <div class="btn-cont" (click)="$event.preventDefault()">
+        <p>Change quantity of tabs by manipulating tabs array</p>
+        <button type="button" class="button primary small" (click)="addNewTab()">
+          Add New Tab
+        </button>
+        <button type="button" class="button alert small" (click)="tabs = []"  *ngIf="tabs.length">
+          Remove All Tabs
+        </button>
+      </div>
+      <br>
+      <tabset>
+        <tab heading="Static title">Static content</tab>
+        <tab *ngFor="let tabz of tabs"
+              [heading]="tabz.title"
+              [active]="tabz.active"
+              (select)="tabz.active = true"
+              (deselect)="tabz.active = false"
+              [disabled]="tabz.disabled"
+              [removable]="tabz.removable"
+              (removed)="removeTabHandler(tabz)"
+              [customClass]="tabz.customClass">
+          {{tabz?.content}}
+        </tab>
+      </tabset>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="dynamicTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="dynamicComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Custom Class with Dynamic Content</h4>
+      <tabset>
+        <tab heading="Static title" customClass="customClass">Static content</tab>
+        <tab *ngFor="let tabz of tabsCustomClass"
+              [heading]="tabz.title"
+              [customClass]="tabz.customClass">
+          {{tabz?.content}}
+        </tab>
+      </tabset>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="customClassTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="customClassComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Scrollable Responsive Tabs</h4>
+      <p>When the amount of tabs in the .tabs container exceeds the width of the viewport, the .tabs container can become scrollable by adding the following SCSS:
+      <pre><code highlight [code]="scrollableTabs"></code></pre>
+    </section>
+    <section>
+      <button type="button" class="button primary small" (click)="addNewTabScroll()">
+        Add New Tab
+      </button><br>
+      <tabset>
+        <tab heading="Static title">Static content</tab>
+        <tab *ngFor="let tabz of tabsScroll"
+              [heading]="tabz.title"
+              [active]="tabz.active"
+              (select)="tabz.active = true"
+              (deselect)="tabz.active = false"
+              [disabled]="tabz.disabled"
+              [removable]="tabz.removable"
+              (removed)="removeTabHandler(tabz)"
+              [customClass]="tabz.customClass">
+          {{tabz?.content}}
+        </tab>
+      </tabset>
+    </section>
+    <!-- <section>
+      <h4>Vertical Tabs</h4>
+      <tabset [vertical]="true" type="tabs">
+        <tab heading="Vertical 1">Vertical content 1</tab>
+        <tab heading="Vertical 2">Vertical content 2</tab>
+        <tab heading="Vertical 3">Vertical content 3</tab>
+        <tab heading="Vertical 4">Vertical content 4</tab>
+      </tabset>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="verticalTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="verticalComponent"></code></pre></tab>
+      </tabset>
+    </section> -->
+
+  </div><!-- /cell -->
+</div><!-- /grid -->

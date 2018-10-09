@@ -1,0 +1,158 @@
+<div class="grid-x grid-margin-x">
+  <div class="medium-4 large-2 cell">
+    <app-sidenav></app-sidenav>
+  </div><!-- /cell -->
+  <div class="medium-8 large-10 cell">
+    <section>
+      <h2>Dropdowns<br> <small>(Dropdown Menus and Dropdown Panes)</small></h2>
+      <p class="lead">
+        Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They’re made interactive with the included dropdown directives.
+      </p>
+    </section>
+    
+    <section>
+      <h3>Usage</h3>
+      <pre><code highlight [code]="usage"></code></pre>
+    </section>
+
+    <section>
+      <h3>Examples</h3>
+      <h4>Basic Button Dropdown Menu</h4>
+      <p>Any sized button can become a dropdown toggle with few markup changes.</p>
+      <p>Dropdown widths are globally set by the <code>$dropdown-width</code> variable in your <code>_settings.scss</code> file. <br> 
+      If you want to display the dropdown caret icon be sure to add the <code>.dropdown</code> class to your button.</p>
+      <p>Here's how dropdowns work with a single button:</p>
+
+      <ul class="dropdown vertical menu" dropdown #dropdown="bs-dropdown">
+        <li class="is-dropdown-submenu-parent">
+          <button dropdownToggle type="button" class="dropdown button primary" aria-controls="dropdown-button">
+            Dropdown Menu 
+          </button>
+          <ul id="dropdown-button" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
+            <li role="menuitem"><a href="#">Item 1</a></li>
+            <li role="menuitem"><a href="#">Item 2</a>
+            </li>
+            <li role="menuitem"><a href="#">Item 3a</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="basicTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="basicComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Basic Dropdown Pane</h4>
+      <p>To create a dropdown pane, simply add the class <code>.dropdown-pane</code> to the content section of your dropdown. Adding the <code>.dropdown-pane</code> class gives the container proper padding and limits the width to whatever you have set in your variable <code>$dropdown-width</code>.</p>
+      <ul class="dropdown menu" dropdown #dropdown="bs-dropdown">
+        <li class="is-dropdown-submenu-parent">
+          <button dropdownToggle type="button" class="button primary" aria-controls="dropdown-button">
+            Dropdown Pane 
+          </button>
+          <div *dropdownMenu class="dropdown-pane" role="menu">
+            <p>Just some standard text content. Nothing special to see here.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="paneTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="paneComponent"></code></pre></tab>
+      </tabset>
+    </section>
+    
+    <section>
+      <h4>Trigger by &lt;a&gt; Tag with Mouseover</h4>
+      <p>Dropdown closes after outside click or clicking on the dropdown link.</p>
+      <ul class="dropdown menu">
+        <li dropdown #dropdownText="bs-dropdown" triggers="mouseover" class="is-dropdown-submenu-parent">
+          <a dropdownToggle (click)="false">
+            Dropdown On Mouseover
+          </a>
+          <ul id="dropdown-triggers-manual" *dropdownMenu class="menu is-dropdown-submenu"
+              role="menu" aria-labelledby="button-triggers-manual">
+            <li role="menuitem"><a href="#">Action</a></li>
+            <li role="menuitem"><a href="#">Another action</a>
+            </li>
+            <li role="menuitem"><a href="#">Something else
+              here</a></li>
+            <li class="divider dropdown-divider"></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="hoverTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="hoverComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Manual Triggering</h4>
+      <p>Dropdowns can be triggered by <code>show</code>, <code>hide</code> and <code>toggle</code> methods from directive. 
+      Use method <code>toggle(true)</code> if you want to toggle the dropdown or <code>toggle(false)</code> if you want to only close opened dropdown.
+      </p>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 small-order-2 medium-order-1 cell">
+          <ul class="dropdown vertical menu" dropdown #dropdown="bs-dropdown" [autoClose]="false">
+            <li class="is-dropdown-submenu-parent">
+              <button dropdownToggle type="button" class="dropdown button primary" aria-controls="dropdown-button">
+                Dropdown 
+              </button>
+              <ul id="dropdown-button" *dropdownMenu class="menu is-dropdown-submenu" role="menu">
+                <li role="menuitem"><a href="#">Item 1</a></li>
+                <li role="menuitem"><a href="#">Item 2</a>
+                </li>
+                <li role="menuitem"><a href="#">Item 3a</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /cell -->
+        <div class="medium-5 large-3 small-order-1 medium-order-2 cell">
+          <div class="button-group">
+            <button type="button" class="button primary" (click)="dropdown.toggle(true)">Toggle</button>
+            <button type="button" class="button secondary" (click)="dropdown.show()">Show</button>
+            <button type="button" class="button alert" (click)="dropdown.hide()">Hide</button>
+          </div><!-- /btn-cont -->
+          <br>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="manualTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="manualComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Dropup Variation</h4>
+      <p>To make dropdown's menu appear above toggle element set <code>dropup</code> property as <code>true</code>.</p>
+      <p>If you want to display the dropup caret icon be sure to add the <code>.dropup</code> class to your button.</p>
+      <ul class="dropdown vertical menu" dropdown [dropup]="isDropup">
+        <li class="is-dropdown-submenu-parent">
+          <button dropdownToggle type="button" class="dropup button primary" aria-controls="dropdown-button">
+            Button DropUp Menu 
+          </button>
+          <ul id="dropdown-button" *dropdownMenu class="menu is-dropdown-submenu has-position-top" role="menu">
+            <li role="menuitem"><a href="#">Item 1</a></li>
+            <li role="menuitem"><a href="#">Item 2</a>
+            </li>
+            <li role="menuitem"><a href="#">Item 3a</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="dropupTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="dropupComponent"></code></pre></tab>
+      </tabset>
+    </section>
+  </div>
+</div>

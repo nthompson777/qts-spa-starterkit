@@ -1,0 +1,475 @@
+<div class="grid-x grid-margin-x">
+  <div class="medium-4 large-2 cell">
+    <app-sidenav></app-sidenav>
+  </div><!-- /cell -->
+  <div class="medium-8 large-10 cell">
+    <section>
+      <h2>Typeahead</h2>
+      <p class="lead">
+        Provides suggestions in a user-friendly way for a given query.
+      </p>
+    </section>
+    <section>
+      <h3>Usage</h3>
+      <pre><code highlight [code]="usage"></code></pre>
+    </section>
+    
+    <section>
+      <h3>Examples</h3>
+      <h4>Basic Array</h4>
+      <p>Type in a U.S. State (example: New York, Virginia, etc.).</p>
+      <div class="callout"><pre>Model: {{selectedBasic | json}}</pre></div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input [(ngModel)]="selectedBasic"
+              [typeahead]="states"
+              type="text"
+              placeholder="U.S. States Only">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="basicTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="basicComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Item Template</h4>
+      <ng-template #customItemTemplate let-model="item" let-index="index">
+        <div>This is: {{model | json}} Index: {{ index }}</div>
+      </ng-template>
+        
+      <div class="callout"><pre>Model: {{selectedItem | json}}</pre></div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input [(ngModel)]="selectedItem"
+                    [typeahead]="states"
+                    [typeaheadItemTemplate]="customItemTemplate"
+                    type="text"
+                    placeholder="U.S. States Only">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset #staticTabs>
+        <tab heading="Template"><pre><code highlight [code]="itemTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="itemComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Option Field</h4>
+      <div class="callout"><pre>Model: {{customSelected | json}}</pre></div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input [(ngModel)]="customSelected"
+              [typeahead]="statesComplex"
+              typeaheadOptionField="name"
+              type="text"
+              placeholder="U.S. States Only">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="optionTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="optionComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Async Data</h4>
+      <div class="callout"><pre>Model: {{asyncSelected | json}}</pre></div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input [(ngModel)]="asyncSelected"
+              [typeahead]="dataSource"
+              (typeaheadLoading)="changeTypeaheadLoading($event)"
+              (typeaheadOnSelect)="typeaheadOnSelect($event)"
+              [typeaheadOptionsLimit]="7"
+              typeaheadOptionField="name"
+              placeholder="Locations loaded with timeout"
+              type="text">
+          </label>
+          <div *ngIf="typeaheadLoading">Loading...</div>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="asyncTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="asyncComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>With Delay</h4>
+      <p>Use <code>typeaheadWaitMs</code> to set minimal waiting time after last character typed before typeahead kicks-in. In example a search begins with delay in 1 second.</p>
+      <div class="callout"><pre>Model: {{selected | json}}</pre></div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input [(ngModel)]="selected"
+              [typeahead]="states"
+              typeaheadWaitMs="1000"
+              type="text"
+              placeholder="U.S. States Only">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="delayTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="delayComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Template-driven Forms</h4>
+      <p>Typeahead can be used in template-driven forms. Keep in mind that value of <code>ngModel</code> is a <code>string</code>.</p>
+      <div class="callout"><pre>Model: {{model | json}}</pre></div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <form>
+            <label for="address">Address
+              <input type="text" 
+                id="address" 
+                required
+                [(ngModel)]="model.address" 
+                name="address">
+            </label>
+            <label for="state">State
+              <input id="state" 
+                name="state"
+                [(ngModel)]="model.state" 
+                [typeahead]="states"
+                type="text"
+                placeholder="U.S. States Only">
+            </label>
+          </form>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="templateDrivenTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="templateDrivenComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Reactive Forms</h4>
+      <p>Typeahead can be used in reactive forms.</p>
+      <div class="callout">Model: {{myForm.value.state | json}}</div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <form [formGroup]="myForm">
+            <label>Type in a U.S. State
+              <input type="text"
+                formControlName="state"
+                [typeahead]="states"
+                [typeaheadOptionsLimit]="7"
+                [typeaheadMinLength]="0"
+                placeholder="Typeahead inside a form">
+            </label>
+          </form>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="reactiveTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="reactiveComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Grouping Results</h4>
+      <div class="callout"><pre>Model: {{groupSelected | json}}</pre></div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input type="text"
+              [(ngModel)]="groupSelected"
+              [typeahead]="statesComplex"
+              typeaheadOptionField="name"
+              typeaheadGroupField="region"
+              placeholder="U.S. States Only">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="groupingTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="groupingComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Ignore Spaces and Order</h4>
+      <p>After setting <code>typeaheadSingleWords</code> input property to <code>true</code> order of typed symbols and spaces between them will be ignored. For example, "zona ari" will match with "Arizona", "york new" will match with "New York".</p>
+      <button type="button" class="button primary"
+        (click)="typeaheadSingleWords = !typeaheadSingleWords">
+        Toggle typeaheadSingleWords
+      </button>
+      <div class="callout"><pre>typeaheadSingleWords: {{typeaheadSingleWords}}
+          Model: {{selectedSpaces | json}}</pre>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input [(ngModel)]="selectedSpaces"
+              [typeahead]="states"
+              [typeaheadSingleWords]="typeaheadSingleWords"
+              type="text"
+              placeholder="U.S. States Only">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="spacesTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="spacesComponent"></code></pre></tab>
+      </tabset>
+    </section>
+    
+    <section>
+      <h4>Phrase Delimiters</h4>
+      <p>Set the word delimiter by <code>typeaheadPhraseDelimiters</code> to match exact phrase. This is demo with delimeters "<code>&</code>" and "<code>,</code>".</p>
+      <div class="callout"><pre>Model: {{selected | json}}</pre>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input [(ngModel)]="selected"
+              [typeahead]="states"
+              [typeaheadSingleWords]="true"
+              typeaheadPhraseDelimiters="&,"
+              type="text"
+              placeholder="U.S. States Only">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="phraseTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="phraseComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Dropup</h4>
+      <div class="callout"><pre>Model: {{selectedDropup | json}}</pre>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input [(ngModel)]="selectedDropup"
+              [typeahead]="states"
+              [dropup]="true"
+              type="text"
+              placeholder="U.S. States Only">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="dropupTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="dropupComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>OnBlur</h4>
+      <p>Returns an option on which user lost a focus. To reproduce start typing the name of the state, then focus on one of the options with mouse or arrow keys and click outside of the typeahead.</p>
+      <div class="callout"><pre>Model: {{selectedOnBlur | json}}</pre>
+      </div>
+      <div class="callout"><pre>Option on blur: {{optionOnBlur | json}}</pre>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input [(ngModel)]="selectedOnBlur"
+              [typeahead]="states"
+              (typeaheadOnBlur)="typeaheadOnBlur($event)"
+              type="text"
+              placeholder="U.S. States Only">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="onblurTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="onblurComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Append to Body</h4>
+      <p><code>container</code> is an input property specifying the element the typeahead should be appended to. Currently only supports <code>body</code>.</p>
+      <div class="callout"><pre>Model: {{selectedBody | json}}</pre>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input [(ngModel)]="selectedBody"
+              [typeahead]="states"
+              container="body"
+              type="text"
+              placeholder="U.S. States Only">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="bodyTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="bodyComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>No Result</h4>
+      <p>Used to display the state when no matches were found. To see message "No Results Found" enter the value that doesn't match anything from the list.</p>
+      <div class="callout"><pre>Model: {{selectedResult | json}}</pre>
+      </div>
+      <div class="callout alert" *ngIf="noResult">No Results Found.</div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input [(ngModel)]="selectedResult"
+              [typeahead]="states"
+              (typeaheadNoResults)="typeaheadNoResults($event)"
+              type="text"
+              placeholder="U.S. States Only">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="resultTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="resultComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Scrollable</h4>
+      <div class="callout"><pre>Model: {{selectedScrollable | json}}</pre>
+      </div>
+      <div class="callout alert" *ngIf="noResult">No Results Found.</div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input [(ngModel)]="selectedScrollable"
+              [typeahead]="states"
+              [typeaheadScrollable]="true"
+              [typeaheadOptionsInScrollableView]="5"
+              type="text"
+              placeholder="U.S. States Only">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="scrollableTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="scrollableComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Min Length</h4>
+      <p>Auto-populated after 3 characters are typed. No results found warning box appears if results are nil.</p> 
+      <pre class="callout">Model: {{selectedMinLength | json}}</pre>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input [(ngModel)]="selectedMinLength"
+              [typeahead]="states"
+              [typeaheadMinLength]="3"
+              (typeaheadNoResults)="typeaheadNoResultsML($event)"
+              type="text"
+              placeholder="U.S. States Only">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+      <div class="callout alert" *ngIf="noResultML">No Results Found</div>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="minTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="minComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Latinize </h4>
+      <p>Use <code>typeaheadLatinize</code> property for matching latin symbols. If it is set to <code>true</code> the word '<strong>súper</strong>' would match '<strong>super</strong>' and vice versa.</p>
+      <div class="callout"><pre>Model: {{selectedLatinize | json}}</pre>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-4 cell">
+          <label>Type Latinized Word - see Component tab below
+            <input [(ngModel)]="selectedLatinize"
+              [typeahead]="frenchWords"
+              [typeaheadLatinize]="true"
+              type="text"
+              placeholder="Words from frenchWords string">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="latinizeTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="latinizeComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>On Select </h4>
+      <p><code>typeaheadOnSelect</code> event is fired when an option was selected. Returns an object with this option.</p>
+      <div class="callout"><pre>Model: {{selectedValue | json}}</pre></div>
+      <div class="callout"><pre>Selected option: {{selectedOption | json}}</pre>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-5 large-3 cell">
+          <label>Type in a U.S. State
+            <input [(ngModel)]="selectedValue"
+              [typeahead]="statesOnSelect"
+              typeaheadOptionField="name"
+              (typeaheadOnSelect)="onSelect($event)"
+              type="text"
+              placeholder="U.S. States Only">
+          </label>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="onselectTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="onselectComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+
+
+
+  </div><!-- /cell -->
+</div><!-- /grid -->

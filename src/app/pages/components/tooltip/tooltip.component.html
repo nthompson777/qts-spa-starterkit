@@ -1,0 +1,284 @@
+<div class="grid-x grid-margin-x">
+  <div class="medium-4 large-2 cell">
+    <app-sidenav></app-sidenav>
+  </div><!-- /cell -->
+  <div class="medium-8 large-10 cell">
+    <section>
+      <h2>Tooltips</h2>
+      <p class="lead">
+        Tooltips are essential for displaying extended information for a term or action on a page.
+      </p>
+    </section>
+    <section>
+      <h3>Usage</h3>
+      <pre><code highlight [code]="usage"></code></pre>
+    </section>
+    
+    <section>
+      <h3>Examples</h3>
+      <h4>Basic</h4>
+      <button type="button" class="button primary"
+        tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Simple demo
+      </button>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="basicTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="basicComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Text Only Tooltip</h4>
+      <p>When using the text-only tooltip, assign the <code>has-tip</code> class to the span that you wish to have the tooltip.</p>
+    </section>
+    <section>
+      <p>I'm a 
+        <span class="has-tip" tooltip="Text only tooltip here!">
+          text only 
+        </span> 
+        tooltip.
+      </p>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="textOnlyTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="textOnlyComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Placement</h4>
+      <p>Four positioning options are available: top, right, bottom, and left. Besides that, auto option may be used to detect a position that fits the component on the screen.</p>
+      <div class="btn-cont">
+        <button type="button" class="button primary"
+          tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+          placement="top">
+          Tooltip on top
+        </button>
+        
+        <button type="button" class="button primary"
+                tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                placement="right">
+          Tooltip on right
+        </button>
+        
+        <button type="button" class="button primary"
+                tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                placement="auto">
+          Tooltip auto
+        </button>
+        
+        <button type="button" class="button primary"
+                tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                placement="left">
+          Tooltip on left
+        </button>
+        
+        <button type="button" class="button primary"
+                tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                placement="bottom">
+          Tooltip on bottom
+        </button>
+      </div>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="placementTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="placementComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Dismiss On Next Click</h4>
+      <button type="button" class="button success"
+        tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+        triggers="focus">
+        Dismissible tooltip
+      </button>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="dismissTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="dismissComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Dynamic Content</h4>
+      <p>Pass a string as tooltip content.</p>
+      <button type="button" class="button primary" [tooltip]="content">
+        Simple binding
+      </button>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="dynamicTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="dynamicComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Tooltip with Icon</h4>
+      <p>Easily include a tooltip with a custom icon (<a href="https://github.com/FortAwesome/angular-fontawesome" target="_blank">Font Awesome 5 Angular</a> component using SVG with JS tree-shaking method used in example below).</p>
+      <fa-icon [icon]="faQuestionCircle"
+        size="lg" 
+        tooltip="Icon tooltip here!"
+        placement="auto" 
+        class="color"></fa-icon>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="iconTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="iconComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Custom Content Template</h4>
+      <p>Create <code>&lt;ng-template #myId&gt;</code> with any html allowed by Angular, and provide <code>template ref [tooltip]="myId"</code> as tooltip content.</p>
+      <ng-template #tolTemplate>Just another: {{content}}</ng-template>
+      <button type="button" class="button secondary" [tooltip]="tolTemplate">
+        TemplateRef binding
+      </button>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="customContentTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="customContentComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Dynamic Html</h4>
+      <p>By using <code>[innerHtml]</code> inside <code>ng-template</code> you can display any dynamic html.</p>
+      <ng-template #popTemplate>Here we go: <div [innerHtml]="html"></div></ng-template>
+      <button type="button" class="button primary"
+              [tooltip]="popTemplate">
+        Show me tooltip with html
+      </button>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="dynamicHtmlTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="dynamicHtmlComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Append to Body</h4>
+      <p>When you have some styles on a parent element that interfere with a tooltip, you’ll want to specify a <code>container="body"</code> so that the tooltip’s HTML will be appended to body. This will help to avoid rendering problems in more complex components (like our input groups, button groups, etc) or inside elements with <code>overflow: hidden</code></p>
+      <div class="grid-x grid-margin-x" style="position: relative; overflow: hidden; padding-top: 10px;">
+        <div class="small-12 cell">
+          <div class="btn-cont">
+            <button type="button" class="button primary"
+                    tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+              Clipped - No Container Body
+            </button>
+            <button type="button" class="button success"
+                    tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                    container="body">
+              Tooltip Appended to Body
+            </button>
+          </div>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="bodyTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="bodyComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Custom Triggers</h4>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-6 cell">
+          <p>Desktop</p>
+          <button type="button" class="button primary"
+                  tooltip="I will hide on click"
+                  triggers="mouseenter:click">
+            Hover over me!
+          </button>
+        </div><!-- /cell -->
+        <div class="medium-6 cell">
+          <p>Mobile</p>
+          <button type="button" class="button secondary"
+                  tooltip="I will hide on click"
+                  triggers="click">
+            Click on me!
+          </button>
+        </div><!-- /cell -->
+      </div><!-- /grid -->
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="triggersTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="triggersComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Manual Triggering</h4>
+      <p>You can manage tooltip using its <code>show()</code>, <code>hide()</code> and <code>toggle()</code> methods. If you want to manage tooltip's state manually, use <code>triggers=""</code></p>
+      <p>
+        <span tooltip="Hello there! I was triggered manually"
+              triggers="" #pop="bs-tooltip">
+          This text has attached tooltip.
+        </span>
+      </p>
+      <div class="btn-cont">
+        <button type="button" class="button success" (click)="pop.show()">
+          Show
+        </button>
+        <button type="button" class="button warning" (click)="pop.hide()">
+          Hide
+        </button>
+        <button type="button" class="button primary" (click)="pop.toggle()">
+          Toggle
+        </button>
+      </div>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="manualTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="manualComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Component Level Styling with Custom Class</h4>
+      <br>
+      <button type="button" class="button primary"
+        tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+        containerClass="component-level">
+        Component Level Styling w/ Custom Class
+      </button>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="compLevelTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="compLevelComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Tooltip with Delay</h4>
+      <p>Hold on cursor above button for 0.5 second or more to see delayed tooltip.</p>
+      <button type="button" class="button primary"
+        tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." 
+        [delay]="500">
+        Tooltip with 0.5sec delay
+      </button>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="delayTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="delayComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+  </div><!-- /cell -->
+</div><!-- /grid -->

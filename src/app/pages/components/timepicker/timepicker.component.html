@@ -1,0 +1,151 @@
+<div class="grid-x grid-margin-x">
+  <div class="medium-4 large-2 cell">
+    <app-sidenav></app-sidenav>
+  </div><!-- /cell -->
+  <div class="medium-8 large-10 cell">
+    <section>
+      <h2>Timepicker</h2>
+      <p class="lead">
+        A lightweight & configurable timepicker directive.
+      </p>
+      <p><em>Note: Zurb's Foundation for Sites does not have a native Timepicker component or styling, so it is recommended to use ngx-foundation styles as a base and/or springboard for your own styling.</em></p> 
+    </section>
+    <section>
+      <h3>Usage</h3>
+      <pre><code highlight [code]="usage"></code></pre>
+    </section>
+    
+    <section>
+      <h3>Examples</h3>
+      <h4>Basic</h4>
+      <timepicker [(ngModel)]="mytime"></timepicker>
+      <div class="callout success"><pre>The time is: {{mytime}}</pre></div>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="basicTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="basicComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Meridian</h4>
+      <timepicker [(ngModel)]="mytime" [showMeridian]="ismeridian"></timepicker>
+      <div class="callout success"><pre>The time is: {{mytime}}</pre></div>
+      <br>
+      <button type="button" class="button secondary" (click)="toggleMode()">
+        Change to {{ismeridian ? '24H' : '12H'}} 
+      </button>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="meridianTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="meridianComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Custom Meridian</h4>
+      <timepicker [(ngModel)]="mytime" [meridians]="meridians"></timepicker>
+      <div class="callout success"><pre>The time is: {{mytime}}</pre></div>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="customMeridTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="customMeridComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Min - Max</h4>
+      <timepicker [(ngModel)]="mytime" [min]="minTime" [max]="maxTime"></timepicker>
+      <div class="callout success"><pre>The time is: {{mytime}}</pre></div>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="customMeridTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="customMeridComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Toggle Seconds</h4>
+      <timepicker [(ngModel)]="mytime" [showSeconds]="showSec"></timepicker>
+      <button class="button primary" (click)="toggleSeconds()">
+        {{showSec? 'Hide Seconds' : 'Show Seconds'}}
+      </button>
+      <div class="callout success"><pre>The time is: {{mytime}} <br>showSeconds: {{showSec}}</pre></div>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="hideSecTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="hideSecComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Disabled</h4>
+      <timepicker [(ngModel)]="mytime" [showMeridian]="ismeridian" [disabled]="!isDisabled"></timepicker>
+      <button type="button" class="button primary" (click)="isDisabled=!isDisabled">{{isDisabled ? 'Disable' : 'Enable'}} Inputs</button>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="disabledTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="disabledComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Readonly</h4>
+      <timepicker [(ngModel)]="mytime" [showMeridian]="ismeridian" [readonlyInput]="!readonly"></timepicker>
+      <button type="button" class="button primary" (click)="readonly=!readonly">{{readonly ? 'Readonly' : 'Editable'}} Inputs</button>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="readonlyTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="readonlyComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Dynamic</h4>
+      <timepicker [(ngModel)]="mytime" (ngModelChange)="changed()" (isValid)="isValid = $event"></timepicker>
+      <div class="callout success"><pre>Time is: {{mytime}}</pre></div>
+      <div *ngIf="!isValid" class="callout alert"><pre>Invalid time format</pre></div>
+      <div class="btn-cont">
+        <button type="button" class="button primary" (click)="update()">Set to 14:00</button>
+        <button type="button" class="button alert" (click)="clear()">Clear</button>
+      </div>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="dynamicTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="dynamicComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Spinners</h4>
+      <timepicker [(ngModel)]="mytime" [showMeridian]="ismeridian" [showSpinners]="showSpinners"></timepicker>
+      <button type="button" class="button primary" (click)="showSpinners = !showSpinners">Show / Hide Spinners</button>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="spinnersTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="spinnersComponent"></code></pre></tab>
+      </tabset>
+    </section>
+
+    <section>
+      <h4>Configuring Defaults</h4>
+      <timepicker [(ngModel)]="mytime"></timepicker>
+      <div class="callout secondary">The time is: {{mytime}}</div>
+    </section>
+    <section>
+      <tabset>
+        <tab heading="Template"><pre><code highlight [code]="defaultsTemplate"></code></pre></tab>
+        <tab heading="Component"><pre><code highlight [code]="defaultsComponent"></code></pre></tab>
+      </tabset>
+    </section>
+  </div><!-- /cell -->
+</div><!-- /grid -->
