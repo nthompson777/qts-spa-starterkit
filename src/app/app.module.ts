@@ -9,7 +9,6 @@ import { defineLocale } from 'ngx-foundation/chronos';
 import { esLocale } from 'ngx-foundation/locale';
 defineLocale('es', esLocale);
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 import { HeaderComponent } from './shared/layout/header/header.component';
 import { FooterComponent } from './shared/layout/footer/footer.component';
 import { SidenavComponent } from './shared/layout/sidenav/sidenav.component';

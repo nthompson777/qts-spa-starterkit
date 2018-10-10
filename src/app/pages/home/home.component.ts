@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AgGridNg2 } from 'ag-grid-angular';
 import { faCheck } from '@fortawesome/pro-regular-svg-icons';
-// import { faTrain01 } from 'ng-font-qts/font-qts';
+import { faTrain01, faTrainTracks03 } from 'ng-font-qts/font-qts';
 import { MessageService } from '../../services/message.service';
 
 
@@ -22,7 +22,8 @@ export class HomeComponent implements OnInit {
   faCheck = faCheck;
 
   // ng Font QTS Test
-  // faTrain01 = faTrain01; 
+  faTrain01 = faTrain01;
+  faTrainTracks03 = faTrainTracks03;
 
   // ngx-foundation Component Test
   dismissible = true;
