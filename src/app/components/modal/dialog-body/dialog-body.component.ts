@@ -13,6 +13,11 @@ export class DialogBodyComponent {
 
   constructor(public bsModalRef: BsModalRef) { }
 
+  confirmModal() {
+    // ... Add confirmation action/function ...
+    this.bsModalRef.hide();
+  }
+
   closeModal() {
     this.bsModalRef.hide();
   }

@@ -14,9 +14,9 @@ import { HeaderComponent } from './shared/layout/header/header.component';
 import { FooterComponent } from './shared/layout/footer/footer.component';
 import { SidenavComponent } from './shared/layout/sidenav/sidenav.component';
 
-import { ModalContentComponent } from './pages/components/reveal/modal-content/modal-content.component';
+import { ModalContentComponent } from './components/modal/modal-content/modal-content.component';
 import { MessageService } from './services/message.service';
-import { DialogBodyComponent } from './pages/components/reveal/dialog-body/dialog-body.component';
+import { DialogBodyComponent } from './components/modal/dialog-body/dialog-body.component';
 import { AgGridModule } from 'ag-grid-angular';
 
 import { HttpClientModule } from '@angular/common/http';

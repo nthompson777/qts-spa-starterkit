@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-foundation/modal';
 
-import { DialogBodyComponent } from '../pages/components/reveal/dialog-body/dialog-body.component';
+import { DialogBodyComponent } from '../components/modal/dialog-body/dialog-body.component';
 
 @Injectable()
 export class MessageService {
