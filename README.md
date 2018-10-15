@@ -2,9 +2,21 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
+## Installation
+
+Run `git clone https://github.com/nthompson777/qts-spa-starterkit`
+
+Rename the folder to your new project name.
+
+cd to the root of the newly created project where the package.json file is located.
+
+Run `yarn` to install all of your dependencies.
+
+To start your new project, run your dev server: `yarn start`
+
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `yarn start` OR `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
