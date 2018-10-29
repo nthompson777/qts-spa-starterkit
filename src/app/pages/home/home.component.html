@@ -2,7 +2,8 @@
   <div class="small-12 cell">
     <section>
       <h3>H3 Header Here</h3>
-      <p>In root, see web.config for IIS pretty URL routing, see .htaccess for Apache.</p> 
+      <p>In root, see web.config for IIS pretty URL routing, see .htaccess for Apache.</p>
+      <p><a (click)="scrollToElement(bottom)" class="button primary">Jump to Link Example</a></p>
     </section>
 
     <section>
@@ -59,7 +60,7 @@
         Simple demo
       </button>
     </section>
-    <section>
+    <section #bottom>
       <p>Create modal as a service. Clicking the button below should launch a modal.</p>
       <button type="button" class="button primary" (click)="confirmModal()">Create Modal as a Service</button>
     </section>

@@ -45,6 +45,12 @@ export class HomeComponent implements OnInit {
     this.rowData = this.http.get('https://api.myjson.com/bins/15psn9');
   }
 
+  // Smooth Scroll
+  scrollToElement($element): void {
+    console.log($element);
+    $element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+  }
+
   getSelectedRows() {
     const selectedNodes = this.agGrid.api.getSelectedNodes();
     const selectedData = selectedNodes.map( node => node.data );
