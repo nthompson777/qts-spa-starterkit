@@ -1,6 +1,7 @@
 {
   "name": "qts-spa-starterkit",
-  "version": "1.0.0",
+  "description": "A Starter Kit for QTS that uses Angular 7, the latest stable version of Foundation for Sites using the XY Grid and SCSS by default and ngx-foundation.",
+  "version": "1.0.6",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
