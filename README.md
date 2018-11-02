@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
- [![npm version](https://img.shields.io/npm/v/ngx-foundation.svg)](https://npmjs.org/package/ngx-foundation) 
+[![dependencies Status](https://david-dm.org/nthompson777/qts-spa-starterkit/status.svg)](https://david-dm.org/nthompson777/qts-spa-starterkit) [![npm version](https://img.shields.io/npm/v/ngx-foundation.svg)](https://npmjs.org/package/ngx-foundation) 
 [![GitHub license](https://img.shields.io/github/license/nthompson777/qts-spa-starterkit.svg)](https://github.com/nthompson777/qts-spa-starterkit/blob/master/LICENSE) 
 
 A Starter Kit for QTS that uses Angular 7, the latest stable version of Foundation for Sites using the XY Grid and SCSS by default and ngx-foundation. The starter kit contains all of the basic assets to get our SPA up and running quickly.
