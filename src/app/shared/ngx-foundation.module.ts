@@ -66,4 +66,4 @@ import {
   ],
   declarations: []
 })
-export class SharedComponentModule { }
+export class NgxFoundationModule { }

@@ -33,14 +33,13 @@
 
 // Scaffolding
 // -------------------------------
-// The overflow auto on the html below is to fix the double scroll bar when a modal is opened - 03.20.18
 
 footer {
 	background-color: $footer-background;
 	color: $footer-color;
 	font-size: .85em;
 	text-align: center;
-	padding: 25px 0 15px;
+	padding: 25px 0 10px;
 
 	a,
 	a:hover,
@@ -52,7 +51,7 @@ footer {
 
 .off-canvas-wrapper {
 	// Sticky Footer (stuck to bottom of viewport no matter the height of body content)
-	min-height: calc(92vh - 77px);  // 100vh minus the height of the footer (only for static footer height)
+	min-height: calc(100vh - 72px);  // 100vh minus the height of the footer (only for static footer height)
 }
 
 main.grid-container-fluid,
@@ -60,15 +59,14 @@ main.grid-container-fluid,
 	background-color: $white;
 	border: 1px solid transparent;
 	box-shadow: 0 1px 1px rgba(0,0,0,.05);
-	padding: 15px;
-	margin: 1.1rem 10px;
-	display: block; // Needed for IE 11
-	border-radius: $global-radius;
+	padding: 30px 25px;
+	margin: 1rem 0;
+	display: block;
 
 	@include breakpoint(small only) {
 		margin-top: 30px;
 		padding: 20px 10px;
-    margin: 20px 5px;
+		margin: 20px 0;
 	}
 }
 
@@ -96,50 +94,30 @@ section {
 	border-bottom: solid 1px #efefef;
 	box-shadow: 0 25px 20px -29px rgba(0,0,0,0.35);
 	width: 100%;
-
-	@include breakpoint(small only) {
-		margin-bottom: 0 !important;  // Unfortunately we have to use Important here.
-	}
 	
 	.mainlogo {
 		float: left;
-		height: 40px;
-    width: 100px;
+		padding: 20px 50px;
 		background: url($mainlogo-image) no-repeat;
-		margin: 0 15px 0 20px;
+		margin: -2px 15px 0 15px;
 
 		@include breakpoint(small only) {
-			margin: 1px 10px 0 0;
-			width: 90px;
+			margin-left: 0;
 		}
 	}
 
-	.appTitle {
-		font-size: $mainlogo-fontSize;
-		font-family: $mainlogo-font-family;
+	.appName {
+		font-size: $appName-fontSize;
+		font-family: $appName-font-family;
+		letter-spacing: $appName-letter-spacing;
 		color: $appName-fontColor;
-		margin-top: 6px;
 
 		@include breakpoint(small only) {
-			font-size: $mainlogo-fontSize - .5em;
-			margin-top: 9px;
-		}
-
-		// Breakpoint
-		@media screen and (max-width: 300px) {
-			font-size: $mainlogo-fontSize - .9em;
-			margin-top: 15px;	
-		}
-
-		@media screen and (max-width: 260px) {
-			display: none;
+			font-size: $appName-fontSize - .3em;
+			line-height: 1.9;
 		}
 	}
 }
-
-//.menu .active a {
-//	pointer-events: none;
-// }
 
 .menu .active a,
 a.active {
@@ -164,20 +142,8 @@ a.active {
 	}
 }
 
-
-// Ag-Grid Global Styles
-// -------------------------------
 .is-dropdown-submenu {
 	z-index: 5;  // Set to >4 for Ag-Grid
-}
-
-.ag-column-hover {
-	background-color: $ag-column-hover;
-}
-
-// Default Height for Ag-Grid Chosen Theme
-.ag-theme-balham {
-	height: 400px; 
 }
 
 
@@ -231,24 +197,12 @@ a.active {
 		&.active > a {
 			color: $white;
 			background: $footer-background;
-			// background-image: linear-gradient(to right, $dark-gray 0%, $dark-gray 65%, $light-gray 100%);
 			pointer-events: none;
-			//padding-bottom: 0.4rem;
 		}
 
 		> a {
 			padding: 0.7rem 0 .7rem 2rem;
 			transition: color .4s ease-out;
-
-			/* &:after {
-				content: '';
-				width: 0;
-				height: 2px;
-				display: block;
-				margin-top: 4px;
-				background: lighten($secondary-color, 20%);
-				transition: width .2s ease;
-			} */
 			
 			&:hover {
 				color: $secondary-color;
@@ -338,7 +292,7 @@ h2, h3 {
 }
 
 
-// Animated Hamburger Menu
+// Hamburger Menu
 // -------------------------------
 .hamburger .line {
 	width: 25px;
@@ -358,33 +312,6 @@ h2, h3 {
 	}
 }
 
-#mobile-menu {
-
-	&.is-active {
-		transition: all 0.2s ease-in-out;
-		transition-delay: 0.6s;
-		transform: rotate(45deg);
-		background: $topbar-background;
-
-		.line:nth-child(2) {
-			width: 0px;
-		}
-
-		.line:nth-child(1),
-		.line:nth-child(3) {
-			transition-delay: 0.3s;
-		}
-
-		.line:nth-child(1) {
-			transform: translateY(7px);
-		}
-
-		.line:nth-child(3) {
-			transform: translateY(-9px) rotate(90deg);
-		}
-	}
-}
-
 
 // Tab Styles
 // -------------------------------
@@ -393,11 +320,12 @@ h2, h3 {
 	overflow-x: auto;
 	overflow-y: hidden;
 	white-space: nowrap;
+	border-bottom: none;
 }
 
-.tabs-title {
+li.tabs-title {
 	background: $light-gray;
-	border-right: solid 1px $light-gray;
+	border-right: solid 1px #ddd;
 	border-bottom: solid 1px $light-gray;
 	// Make Tabs Responsive and Scrollable
 	float: none;
@@ -406,8 +334,9 @@ h2, h3 {
 
 .tabs-title.is-active,
 .tabs-title > a[aria-selected='true'] {
-	border-bottom: 2px solid white;
+	border-bottom: 2px solid $white;
 	margin-bottom: -2px;
+	box-shadow: -10px 0px 50px -20px rgba(10, 10, 10, 0.5);
 }
 
 
@@ -497,6 +426,22 @@ h2, h3 {
 }
 
 
+// Ag-Grid Global Styles
+// -------------------------------
+.is-dropdown-submenu {
+	z-index: 5;  // Set to >4 for Ag-Grid
+}
+
+.ag-column-hover {
+	background-color: $ag-column-hover;
+}
+
+// Default Height for Ag-Grid Chosen Theme
+.ag-theme-balham {
+	height: 400px; 
+}
+
+
 // Color Helpers
 // -------------------------------
 
@@ -512,28 +457,9 @@ h2, h3 {
 	color: $warning-color;
 }
 
-//.muted-color,
-//.disabled,
-//.tabs-title > a.disabled {
-//	color: $muted-color;  // disabled state
-//}
-
-//.disabled {
-	// cursor: not-allowed;
-//	user-select: none;
-//	pointer-events: none;
-//} 
-
 
 // Prevent FOUC for our Mobile Menu
 // --------------------------------
-
-// Small ONLY
-/* @media screen and (max-width: 639px) {
-	.hide-for-small-only {
-		display: none !important;
-	}
-} */
 
 @include breakpoint(medium) {
 	.title-bar {
@@ -566,7 +492,6 @@ h2, h3 {
 	}
 }
 
-
 // Webfonts
 // --------------------------------
 @font-face {
@@ -585,13 +510,4 @@ h2, h3 {
 				font('Roboto-Medium-webfont.ttf') format('truetype');
 	font-weight: bold;
 	font-style: bold;
-}
-
-@font-face {
-	font-family: 'promptmedium';
-	src: 	font('Prompt-Medium-webfont.eot?') format('eot'),
-				font('Prompt-Medium-webfont.woff') format('woff'),
-				font('Prompt-Medium-webfont.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
 }

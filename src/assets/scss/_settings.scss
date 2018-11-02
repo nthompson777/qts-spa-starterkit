@@ -169,8 +169,10 @@ $header-styles: (
 );
 $mainlogo-fontSize: 1.5em;
 $mainlogo-image: './assets/img/qts_logo.svg';
-$mainlogo-font-family: 'promptmedium', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$appName-fontSize: 1.5em;
+$appName-font-family: 'robotomedium', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $appName-fontColor: $primary-color;
+$appName-letter-spacing: 0.04em;
 $header-text-rendering: optimizeLegibility;
 $small-font-size: 80%;
 $header-small-font-color: $dark-gray;

@@ -9,13 +9,13 @@
             <span class="line"></span>
             <span class="line"></span>
           </div>
-          <a routerLink="" (click)="select(appTitle)" [ngClass]="{active: isActive(appTitle)}" title="{{appTitle}} Home">
-            <div class="mainlogo">
-            </div>
-            <div class="appTitle">
+          <div class="appName">
+            <a routerLink="" title="{{appTitle}} Home">
+              <div class="mainlogo">
+              </div>
               {{appTitle}}
-            </div>
-          </a>
+            </a>
+          </div>
         </div>
         <nav class="top-bar-right hide-for-small-only">
           <ul class="menu">

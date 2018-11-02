@@ -5,20 +5,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { GlobalPipesModule } from './pipes/global-pipes.module';
 import { AppComponent } from './app.component';
-import { SharedComponentModule } from './shared/shared-component.module';
+import { NgxFoundationModule } from './shared/ngx-foundation.module';
 import { defineLocale } from 'ngx-foundation/chronos';
 import { esLocale } from 'ngx-foundation/locale';
 defineLocale('es', esLocale);
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AgGridModule } from 'ag-grid-angular';
 
-import { HeaderComponent } from './shared/layout/header/header.component';
-import { FooterComponent } from './shared/layout/footer/footer.component';
+import { HeaderComponent } from './_layouts/header/header.component';
+import { FooterComponent } from './_layouts/footer/footer.component';
 import { ModalContentComponent } from './components/modal/modal-content/modal-content.component';
 import { MessageService } from './services/message.service';
 import { DialogBodyComponent } from './components/modal/dialog-body/dialog-body.component';
 
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -37,7 +37,7 @@ import { HomeComponent } from './pages/home/home.component';
     GlobalPipesModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    SharedComponentModule,
+    NgxFoundationModule,
     AgGridModule.withComponents([]),
     HttpClientModule,
   ],
