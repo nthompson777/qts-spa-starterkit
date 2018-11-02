@@ -18,11 +18,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 5.  [API and Examples](#api-and-examples)
 6.  [Code Scaffolding](#code-scaffolding)
 7.  [Stylesheets and Assets](#stylesheets-and-assets)
-8.  [SCSS Variables](#scss-variables)
-9.  [Optional What-input](#optional-what-input)
-10. [Build and Tests](#build-and-tests)
-11. [Help](#help)
-12. [License](#license)
+8.  [Optional What-input](#optional-what-input)
+9.  [Build and Tests](#build-and-tests)
+10. [Help](#help)
+11. [License](#license)
 
 ## Getting Started
 
@@ -85,10 +84,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Stylesheets and Assets
 
 The main stylesheet `/src/styles.scss` contains all of the needed base imports. All other stylesheets are located in the assets directory: `/src/assets/scss`. All Foundation components and the Motion UI Sass Library are imported by default, so be sure to comment out any unneeded Foundation components that you're not using in your project to keep your stylesheet file size smaller. 
-
-### SCSS Variables
-
-Add your own unique styling by changing the variables in `/src/assets/scss/_settings.scss`. This overrides the Foundation variables without having to edit the Foundation for Sites settings source file which allows for a near seemless upgrade when updating Foundation.  
+  
 ### What-input
 
 `what-input.js` is imported as a dependency and is in the `scripts` array located in the `/angular.json` file. 
