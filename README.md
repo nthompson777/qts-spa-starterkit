@@ -18,7 +18,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 5.  [API and Examples](#api-and-examples)
 6.  [Code Scaffolding](#code-scaffolding)
 7.  [Stylesheets and Assets](#stylesheets-and-assets)
-8.  [Optional What-input](#optional-what-input)
+8.  [What-input](#what-input)
 9.  [Build and Tests](#build-and-tests)
 10. [Help](#help)
 11. [License](#license)
